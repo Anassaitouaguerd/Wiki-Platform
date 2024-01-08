@@ -4,9 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Xtra Blog</title>
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/templatemo-xtra-blog.css" rel="stylesheet">
-
+    <link href="assets/css/script.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
 	<header class="tm-header" id="tm-header">
@@ -14,14 +13,7 @@
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
-            <div class="tm-site-header">
-                <div class="mb-3 mx-auto tm-site-logo"><i class="fas fa-times fa-2x"></i></div>            
-                <h1 class="text-center">Xtra Blog</h1>
-            </div>
-           <?php include_once "./partials/_navbar.php" ;?>
-            <p class="tm-mb-80 pr-5 text-white">
-                Xtra Blog is a multi-purpose HTML template from TemplateMo website. Left side is a sticky menu bar. Right side content will scroll up and down.
-            </p>
+           <?php include ("../Views/partials/_navbar.php") ;?>
         </div>
     </header>
     <div class="container-fluid">
@@ -29,11 +21,20 @@
             <!-- Search form -->
             <div class="row tm-row">
                 <div class="col-12">
-                    <form method="GET" class="form-inline tm-mb-80 tm-search-form">                
-                        <input class="form-control tm-search-input" name="query" type="text" placeholder="Search..." aria-label="Search">
-                        <button class="tm-search-button" type="submit">
-                            <i class="fas fa-search tm-search-icon" aria-hidden="true"></i>
-                        </button>                                
+                    <form method="GET" class="d-flex justify-content-between align-items-center" oninput="search()">                
+                    <div class="input-group search mx-2">
+                          <input type="text" class="form-control" placeholder="Search...Wiki" aria-label="Search" aria-describedby="basic-addon2">
+                        </div>
+                    <div class="input-group search mx-2">
+                          <input type="text" class="form-control" placeholder="Search...Categorie" aria-label="Search" aria-describedby="basic-addon2">
+                        </div>
+                    <div class="input-group search mx-2">
+                          <input type="text" class="form-control" placeholder="Search...Tags" aria-label="Search" aria-describedby="basic-addon2">
+                        </div>
+                        <div class="input-group-append ">
+                          <button class="btn btn-outline-secondary" type="button">Search</button>
+                        </div>
+                        
                     </form>
                 </div>                
             </div>            
@@ -41,9 +42,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-01.jpg" alt="Image" class="img-fluid">                            
-                        </div>
                         <span class="position-absolute tm-new-badge">New</span>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">Simple and useful HTML layout</h2>
                     </a>                    
@@ -64,9 +62,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-60">
-                        <div class=" tm-post-link-inner">
-                            <img src="img/img-02.jpg" alt="Image" class="img-fluid">                            
-                        </div>
                         <span class="position-absolute tm-new-badge">New</span>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">Multi-purpose blog template</h2>
                     </a>                    
@@ -87,9 +82,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-03.jpg" alt="Image" class="img-fluid">
-                        </div>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">How can you apply Xtra Blog</h2>
                     </a>                    
                     <p class="tm-pt-30">
@@ -109,9 +101,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-04.jpg" alt="Image" class="img-fluid">
-                        </div>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">A little restriction to apply</h2>
                     </a>                    
                     <p class="tm-pt-30">
@@ -131,9 +120,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-05.jpg" alt="Image" class="img-fluid">
-                        </div>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">Color hexa values of Xtra Blog</h2>
                     </a>                    
                     <p class="tm-pt-30">
@@ -155,9 +141,6 @@
                 <article class="col-12 col-md-6 tm-post">
                     <hr class="tm-hr-primary">
                     <a href="post.html" class="effect-lily tm-post-link tm-pt-20">
-                        <div class="tm-post-link-inner">
-                            <img src="img/img-06.jpg" alt="Image" class="img-fluid">
-                        </div>
                         <h2 class="tm-pt-30 tm-color-primary tm-post-title">Donec convallis varius risus</h2>
                     </a>                    
                     <p class="tm-pt-30">
@@ -200,11 +183,12 @@
                 </div>                
             </div>            
         <?php
-        include_once "./partials/_footer.php";
+        include("partials/_footer.php");
         ?>
         </main>
     </div>
     <script src="js/jquery.min.js"></script>
     <script src="js/templatemo-script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
