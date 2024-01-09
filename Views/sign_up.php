@@ -40,19 +40,16 @@
                                 <input class="login_input" type="text" name="username" placeholder="Username" required> </div>
                         </div>
                         <div class="form-group py-2">
+                        <p class="messageValid" ></p>
                             <div class="input-field"> 
-                                <input class="login_input" type="email" name="email" placeholder="Email" required> </div>
+                                 <input class="login_input" type="email" placeholder="Enter your Email" oninput="email_validation(event)" name="email" required> </div>
                         </div>
                         <div class="form-group py-1 pb-2">
                             <div class="input-field">
-                                 <input class="login_input" type="password" name="password" placeholder="Enter your Password" required>
-                             <button class="btn bg-white text-muted">
-                                 <span class="far fa-eye-slash"></span>
-                             </button>
-                            </div>
+                                <input class="login_input" type="password" placeholder="Enter your Password" oninput="pass_validation(event)" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
                         </div>
-                        <button type="submit" class="no-background" name="save">
-                            <div class="btn btn-primary btn-block mt-3">Sign up</div>
+                        <button type="submit" class="btn_submit btn btn-primary btn-block mt-3" name="save">
+                            Sign up
                         </button>
                         <div class="text-center pt-4 text-muted">Don't have an account? <a href="login">Login</a> </div>
                     </form>
@@ -63,5 +60,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>

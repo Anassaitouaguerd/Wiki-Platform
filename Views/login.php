@@ -37,14 +37,15 @@
                     ?>
                     <form action="login_controller" method="POST">
                         <div class="form-group py-2">
+                            <p class="messageValid" ></p>
                             <div class="input-field"> 
-                                 <input class="login_input" type="email" placeholder="Enter your Email" name="email" required> </div>
+                                 <input class="login_input" type="email" placeholder="Enter your Email" oninput="email_validation(event)" name="email" required> </div>
                         </div>
                         <div class="form-group py-1 pb-2">
                             <div class="input-field">
-                                <input class="login_input" type="password" placeholder="Enter your Password" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
+                                <input class="login_input" type="password" placeholder="Enter your Password" oninput="pass_validation(event)" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
                         </div>
-                        <button type="submit" name="login" class="btn btn-primary w-50 mt-3">
+                        <button type="submit" name="login" class="btn_submit btn btn-primary w-50 mt-3">
                             Login
                         </button>
                     </form>
@@ -58,5 +59,6 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
