@@ -37,14 +37,15 @@
                     ?>
                     <form action="login_controller" method="POST">
                         <div class="form-group py-2">
-                            <p class="messageValid" ></p>
                             <div class="input-field"> 
-                                 <input class="login_input" type="email" placeholder="Enter your Email" oninput="email_validation(event)" name="email" required> </div>
-                        </div>
-                        <div class="form-group py-1 pb-2">
-                            <div class="input-field">
-                                <input class="login_input" type="password" placeholder="Enter your Password" oninput="pass_validation(event)" name="password" required> <button class="btn bg-white text-muted"> <span class="far fa-eye-slash"></span> </button> </div>
-                        </div>
+                                <input class="login_input" type="email" placeholder="Enter your Email" onkeydown="email_validation(event)" name="email" required> </div>
+                            </div>
+                            <div class="form-group py-1 pb-2">
+                                <div class="input-field">
+                                    <input class="login_input" type="password" placeholder="Enter your Password" onkeydown="pass_validation(event)" name="password" required>
+                                </div>
+                            </div>
+                            <p class="messageValid" ></p>
                         <button type="submit" name="login" class="btn_submit btn btn-primary w-50 mt-3">
                             Login
                         </button>

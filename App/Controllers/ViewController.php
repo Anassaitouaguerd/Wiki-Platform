@@ -10,8 +10,9 @@ class ViewController
     {
         require __DIR__ ."/../../Views/Admin/Dashboard.php";
     }
-    public static function categorie()
+    public static function categorie($data)
     {
+        $getCategorie = $data ;
         require __DIR__ ."/../../Views/Admin/Categories.php";
     }
     public static function Login()
