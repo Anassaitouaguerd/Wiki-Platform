@@ -46,5 +46,13 @@ class Crud_Categorie
         return $stmt->execute();
         
     }
-
+    
+    public static function delete($id)
+    {
+        self::conect();
+        $sql = "DELETE FROM categories WHERE id = ?";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $id);
+        return  $stmt->execute();
+    }
 }

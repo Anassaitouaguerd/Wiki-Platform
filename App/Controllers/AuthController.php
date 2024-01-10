@@ -79,17 +79,26 @@ public static function Register()
                 $Email_valid = self::Validation_email($email);
                 $Password = self::Validation_pass($password);
                 $username_valid = self::Validation_name($username);
-                    $Pass = MD5($Password);
+                $Pass = MD5($Password);
                 self::$register = Authentification::register($username_valid, $Email_valid, $Pass);
                 $result = self::$register;
+                self::$log = Authentification::login($Email_valid,$Pass);
+                $data = self::$log;
+                $_SESSION['name'] = $data[0]['username'];
+                $_SESSION['id'] = $data[0]['id'];
+                $_SESSION['role'] = $data[0]['role'];
+
                 if($result)
                 {
-                    $_SESSION['name'] = $result['username'];
-                    $_SESSION['id'] = $result['id'];
-                        header('location:dash_autheur');
+                        header('location: dash_autheur');
                 }
 
             }
          }  
+}
+public static function log_out()
+{
+    session_destroy();
+    header('location:home');
 }
 }

@@ -9,6 +9,9 @@ body {
     line-height: 2em;
     overflow-x: hidden;
 }
+a{
+    text-decoration: none;
+}
 
 p, span { color: #999; }
 hr { 
@@ -73,11 +76,9 @@ hr {
     justify-content: space-between;
 }
 
-.tm-nav { margin-bottom: 100px; }
 
 .tm-nav-item {
     list-style: none;
-    margin-bottom: 30px;
 }
 
 .tm-nav-link {
@@ -92,28 +93,8 @@ hr {
     padding: 30px;
 }
 
-.tm-nav-item:hover .tm-nav-link,
-.tm-nav-item.active .tm-nav-link
- {
-    color: #0CC;
-    background-color: white;
-    text-decoration: none;
-}
+/* .tm-nav ul { position: relative; } */
 
-.tm-nav ul { position: relative; }
-
-.tm-nav-item:hover:after,
-.tm-nav-item.active:after {
-    content: '';
-    width: 100%;
-    max-width: 300px;    
-    height: 75px;
-    display: block;
-    margin-left: 10px;
-    margin-top: -65px;
-    position: absolute;
-    z-index: -1000;
-}
 
 .tm-nav-link i { margin-right: 37px; }
 
@@ -475,9 +456,10 @@ a:hover {
 input[type='text'],
 input[type='email'],
 input[type='password'] {
-    
+    border: solid 1px #999;
     width: 100%
 }
+
 .login_input{
     border: none;
     outline: none;

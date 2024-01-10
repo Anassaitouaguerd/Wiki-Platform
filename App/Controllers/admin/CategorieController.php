@@ -30,13 +30,16 @@ class CategorieController
         {
             echo json_encode($update);
         }
-
-
-        // echo "<pre>";
-        // print_r($categoryID);
-        // echo "</pre>";
-        // die();
-
-
+    }
+    public static function delet_categporie()
+    {
+        $data = json_decode(file_get_contents("php://input"));
+        $categorieID = $data;
+        $delet = Crud_Categorie::delete($categorieID);
+        if($delet)
+        {
+            echo json_encode($delet);
+        }
+        
     }
 }
