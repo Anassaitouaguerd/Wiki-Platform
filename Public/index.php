@@ -24,7 +24,7 @@ if(isset($_SESSION['role']))
 {
     $Route->get('/dashboard',fn()=>ViewController::dashboard());
     $Route->get('/page_home',fn()=>ViewController::dash_auteur());
-    $Route->get('/gestion_wikis',fn()=>Gestion_wiki::getCategie_tags());
+    $Route->get('/gestion_wikis',fn()=>Gestion_wiki::getCategorie_tags());
     $Route->get('/log_out',fn()=>AuthController::log_out());
     $Route->get('/dash_autheur',fn()=>ViewController::dash_auteur());
     $Route->post('/add_categorie',fn()=>CategorieController::Add_categorie());
@@ -33,7 +33,7 @@ if(isset($_SESSION['role']))
     $Route->post('/add_tag',fn()=>TageController::add_tag());
     $Route->post('/update_Tag',fn()=>TageController::update_Tag());
     $Route->post('/delet_tag',fn()=>TageController::delet_tag());
-    // $Route->post('/add_wiki',fn()=>Gestion_wiki::add_wiki());
+    $Route->post('/add_wiki',fn()=>Gestion_wiki::add_wiki());
     
 }
 $Route->get('/categorie',fn()=>CategorieController::display_categorie());

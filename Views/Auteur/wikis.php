@@ -45,7 +45,7 @@
                     </div>
                     <div class="w-50 mt-4">
                     <label for="Tags" class="ms-4">Tags</label>
-                    <select id="select-tags" name="state[]" multiple class="form-control ml-1" placeholder="Select a Tags..." autocomplete="off">
+                    <select id="select-tags" name="tags[]" multiple class="form-control ml-1" placeholder="Select a Tags..." autocomplete="off">
                         <option value="">Select a person...</option>
                         <?php
                         foreach($allTags as $rows)
