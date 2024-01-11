@@ -14,6 +14,11 @@ class ViewController
     {
         require __DIR__ ."/../../Views/Auteur/dash_autheur.php";
     }
+    public static function my_wikis($data)
+    {
+        $all_myWiki = $data;
+        require __DIR__ ."/../../Views/Auteur/All_My_Wiki.php";
+    }
     public static function wiki($data_categorie ,$tags)
     {
         $allCategorie = $data_categorie;

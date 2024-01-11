@@ -10,6 +10,15 @@ class Crud_wiki
             self::$conn = Database::connection();
         }
     }
+    public static function show_MyWiki($id_user)
+    {
+        self::conect();
+        $sql = "SELECT * FROM wikis WHERE user_id = ? ";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $id_user);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    } 
     public static function show_OneWiki($id)
     {
         self::conect();
@@ -37,6 +46,14 @@ class Crud_wiki
         $stmt = self::$conn->prepare($sql);
         $stmt->bindParam(1 , $wiki_id);
         $stmt->bindParam(2 , $tag_id);
+        return $stmt->execute();
+    }
+    public static function delete($wiki_id)
+    {
+        self::conect();
+        $sql = "DELETE FROM wikis WHERE id = ?";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $wiki_id);
         return $stmt->execute();
     }
 

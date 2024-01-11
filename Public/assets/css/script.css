@@ -8,6 +8,7 @@ body {
     font-size: 19px;
     line-height: 2em;
     overflow-x: hidden;
+    background-color: #f8f9fa;
 }
 a{
     text-decoration: none;
@@ -80,6 +81,7 @@ hr {
 .tm-nav-item {
     list-style: none;
 }
+
 
 .tm-nav-link {
     color: white;
