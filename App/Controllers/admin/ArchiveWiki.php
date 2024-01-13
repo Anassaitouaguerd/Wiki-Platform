@@ -7,10 +7,21 @@ class ArchiveWiki
     public static function archive_wiki()
     {
         extract($_POST);
-        $archive = Crud_wiki::update_OneColumn($wiki_id);
+        $changes = "archiv";
+        $archive = Crud_wiki::update_OneColumn($wiki_id , $changes);
         if($archive)
         {
             header('location: home');
+        }
+    }
+    public static function disarchiver_wiki()
+    {
+        extract($_POST);
+        $changes = NULL;
+        $disarchiver_wiki = Crud_wiki::update_OneColumn($wiki_id , $changes);
+        if($disarchiver_wiki)
+        {
+            header('location: /');
         }
     }
     public static function view_Archive()
