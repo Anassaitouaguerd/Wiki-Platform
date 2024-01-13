@@ -45,7 +45,7 @@
 
                             foreach ($getallCategorie as $rows) {
                             ?>
-                                <option value="<?= $rows['id_categorie'] ?>"><?= $rows['name'] ?></option>
+                                <option value="<?= $rows['id_categorie'] ?>" selected><?= $rows['name'] ?></option>
                             <?php
                             } ?>
 
