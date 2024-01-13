@@ -11,19 +11,34 @@
 
 <body>
 
-           <?php include ("partials/_navbar.php") ;?>
-       
-<div class="container">
-    <div class="row">
-        <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
-            <div class="panel border bg-white">
-                <div class="panel-heading">
-                    <h3 class="pt-3 font-weight-bold">Login</h3>
+            <?php include("partials/_navbar.php"); ?>
+
+    <div class="container">
+        <div class="row form_login">
+
+            <div class="panel-heading">
+                <h3 class="pt-3 font-weight-bold">Login</h3>
+            </div>
+            <?php
+            if (isset($_SESSION['message'])) {
+            ?>
+                <span class="text-danger">
+                    <?= $_SESSION['message'] ?>
+                </span>
+            <?php
+            }
+            unset($_SESSION['message']);
+            ?>
+            <form id="form" action="">
+                <div class="input-control">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="text">
+                    <div class="error"></div>
                 </div>
                 <div class="input-control">
                     <label for="password">Password</label>
                     <input id="password" name="password" type="password">
-                    <div class="error"></div>
+                    <div class="error "></div>
                 </div>
 
                 <button type="submit" name="login" class="btn_submit btn btn-primary w-50 mt-3">
@@ -38,7 +53,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/login.js"></script>
 </body>
 
 </html>

@@ -99,12 +99,13 @@ class Crud_wiki
         $stmt->bindParam(2 , $tag_id);
         return $stmt->execute();
     }
-    public static function update_OneColumn($wiki_id)
+    public static function update_OneColumn($wiki_id ,$changes)
     {
         self::conect();
-        $sql = "UPDATE wikis SET deletedAt = 'archiv' WHERE id = ?";
+        $sql = "UPDATE wikis SET deletedAt = ? WHERE id = ?";
         $stmt = self::$conn->prepare($sql);
-        $stmt->bindParam(1 , $wiki_id);
+        $stmt->bindParam(1 , $changes);
+        $stmt->bindParam(2 , $wiki_id);
         return $stmt->execute();
     } 
     public static function show_Allwiki_archive()

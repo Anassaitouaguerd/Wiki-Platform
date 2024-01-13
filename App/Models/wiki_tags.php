@@ -19,4 +19,12 @@ class wiki_tags
         $stmt->bindParam(2 , $id_wiki);
         return $stmt->execute();
     }
+    public static function drop_Alltags($id_wiki)
+    {
+        self::conect();
+        $sql = "DELETE FROM wiki_tags WHERE wiki_id = ?";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $id_wiki);
+        return $stmt->execute();
+    }
 }

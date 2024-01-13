@@ -10,14 +10,7 @@
 </head>
 
 <body>
-    <header class="tm-header" id="tm-header">
-        <div class="tm-header-wrapper">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
             <?php include("partials/_navbar.php"); ?>
-        </div>
-    </header>
     <div class="container">
     <div class="row form_login">
 
@@ -34,7 +27,7 @@
         }
         unset($_SESSION['account_already']);
         ?>
-        <form id="form" action="/">
+        <form id="form">
             <div class="input-control">
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text">

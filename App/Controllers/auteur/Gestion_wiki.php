@@ -70,9 +70,10 @@ class Gestion_wiki
     {
         extract($_POST);
         $update_wiki = Crud_wiki::update($id_wiki, $title, $description, $categorie_wiki, $article);
+        $dropAllTags = wiki_tags::drop_Alltags($id_wiki);
         for ($i = 0; $i < count($tags); $i++) {
             $tag_id = $tags[$i];
-             $update_wikiTags = wiki_tags::update($id_wiki , $tag_id);
+             $update_wikiTags =  $insert_wikiTags = Crud_wiki::table_wiki_tags($id_wiki , $tag_id);
             
         }
         if($update_wikiTags)
