@@ -1,26 +1,22 @@
 
-/*================== VALIDATION DE FORM REGISTER =======================*/
+/*================== VALIDATION DE FORM LOGIN =======================*/
 /*===================================================================*/
 const form = document.getElementById('form');
-const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  if (validateInputs_register())
+  if (validateInputs_login())
   {
-    
-    const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
     const data = {
-      username: usernameValue,
       email: emailValue,
       password: passwordValue
     };
     const req = new XMLHttpRequest();
-    req.open("POST","signup_controller");
+    req.open("POST","login_controller");
     req.setRequestHeader("Content-type","Application/json");
     req.send(JSON.stringify(data));
     req.onreadystatechange = () =>{
@@ -33,13 +29,12 @@ form.addEventListener('submit', e => {
         }
         else if(res === "false")
         {
-          window.location = 'sign_up';
+          window.location = 'login';
         }
       }
     }
-  } 
-}
-);
+  }
+});
 
 const setError = (element, message) => {
     const inputControl = element.parentElement;
@@ -50,7 +45,7 @@ const setError = (element, message) => {
     inputControl.classList.remove('success')
 }
 
-const setSuccess = element => {
+const setSuccess = (element) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
 
@@ -64,47 +59,39 @@ const isValidEmail = (email) => {
     return re.test(String(email).toLowerCase());
 }
 
+const validateInputs_login = () => {
+    let countError = [0 , 0];
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
 
-const validateInputs_register = () => {
-  let countError = [0,0,0];
-const usernameValue = username.value.trim();
-const emailValue = email.value.trim();
-const passwordValue = password.value.trim();
 
-if(usernameValue === '') {
-  setError(username, 'Username is required');
-  countError[0] = 0;
-} else {
-  setSuccess(username);
-  countError[0] = 1;
-}
+    if(emailValue === '') {
+        setError(email, 'Email is required');
+        countError[0] = 0;
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Provide a valid email address');
+        countError[0] = 0;
+    } else {
+        setSuccess(email);
+        countError[0] = 1;
+    }
 
-if(emailValue === '') {
-  setError(email, 'Email is required');
-  countError[1] = 0;
-} else if (!isValidEmail(emailValue)) {
-  setError(email, 'Provide a valid email address');
-  countError[1] = 0;
-} else {
-  setSuccess(email);
-  countError[1] = 1;
-}
+    if(passwordValue === '') {
+        setError(password, 'Password is required');
+        countError[1] = 0;
+    } else if (passwordValue.length < 8 ) {
+        setError(password, 'Password must be at least 8 character.');
+        countError[1] = 0;
+    } else {
+        setSuccess(password);
+        countError[1] = 1 ;
+    }
+    if(countError.toString() == [1,1].toString())
+    {
+      return true ;
 
-if(passwordValue === '') {
-  setError(password, 'Password is required');
-  countError[2] = 0;
-} else if (passwordValue.length < 8 ) {
-  setError(password, 'Password must be at least 8 character.');
-  countError[2] = 0;
-} else {
-  setSuccess(password);
-  countError[2] = 1;
-}
-if(countError.toString() == [1, 1, 1].toString())
-{ 
-  return true;
-}
-else{
-  return false;
-}
-}
+    }else{
+      return false;
+    }
+
+};
