@@ -29,8 +29,17 @@
                     <?php
                     foreach ($getwiki as $rows) {
                     ?>
+                       
                         <div class="col-md-6">
                             <div class="card mb-4">
+                            <form action="disarchiver" method="POST">
+                                <div class="d-flex flex-row-reverse">
+                            <input type="hidden" name="wiki_id" value="<?= $rows['id'] ?>">
+                            <button type="submit" name="disarchiver" class="btn btn-success">
+                                Disarchiver
+                            </button>
+                            </div>
+                        </form>
                                 <div class="card-body">
                                     <h2 class="card-title p-4"><?= $rows['title'] ?></h2>
                                     <h4 class="card-title p-4"><?= $rows['description'] ?></h4>
