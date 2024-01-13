@@ -18,6 +18,7 @@ class Crud_Tage
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+  
     public static function show_Onetage($id)
     {
         self::conect();
@@ -27,6 +28,16 @@ class Crud_Tage
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    public static function show_TagsWiki($id)
+    {
+        self::conect();
+        $sql = "SELECT name,tags.id FROM wiki_tags INNER JOIN tags ON tags.id = wiki_tags.tag_id WHERE wiki_id = ?";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $id);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public static function insert($tagName)
     {
         self::conect();

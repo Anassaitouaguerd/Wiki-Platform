@@ -1,4 +1,9 @@
-<nav class="tm-nav" id="tm-nav">
+<?php
+if (isset($_SESSION['role'])) {
+    ?>
+       <header class="tm-header bg-dark" id="tm-header">
+       <div class="tm-header-wrapper">
+       <nav class="tm-nav" id="tm-nav">
     <ul>
         <li class="tm-nav-item">
             <a href="/" class="tm-nav-link">
@@ -9,17 +14,8 @@
             </a>
 
         </li>
-        <li class="tm-nav-item">
-            <a href="post.html" class="tm-nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-stickies-fill mx-4" viewBox="0 0 16 16">
-                    <path d="M0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5A1.5 1.5 0 0 0 0 1.5" />
-                    <path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177z" />
-                </svg>
-                Single Post
-            </a>
-        </li>
+       
         <?php
-        if (isset($_SESSION['role'])) {
             if ($_SESSION['role'] === "admin") {
         ?>
 
@@ -41,7 +37,7 @@
                         Gestion Tags</a>
                 </li>
                 <li class="tm-nav-item">
-                    <a class="tm-nav-link" href="wiki_archive">
+                    <a class="tm-nav-link" href="PageWiki_archive">
                         <i class="fas fa-home"></i>
                         Wiki Archive</a>
                 </li>
@@ -50,17 +46,11 @@
                         <i class="fas fa-home"></i>
                         Log Out</a>
                 </li>
+                </header>
 
             <?php
             } elseif ($_SESSION['role'] === "author") {
             ?>
-                <li class="tm-nav-item">
-                    <a class="tm-nav-link" href="dashboard">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bar-chart-line mx-4" viewBox="0 0 16 16">
-                            <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1zm1 12h2V2h-2zm-3 0V7H7v7zm-5 0v-3H2v3z" />
-                        </svg>
-                        Dashboard</a>
-                </li>
                 <li class="tm-nav-item">
                     <a class="tm-nav-link" href="my_wikis">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-lines-fill mx-4" viewBox="0 0 16 16">
@@ -84,6 +74,9 @@
                         </svg>
                         Log Out</a>
                 </li>
+                </div>
+                </header>
+
 
             <?php
             }
@@ -91,9 +84,23 @@
 
 
             ?>
+    <header class="custom-header">
+    
+
+    <nav class="custom-nav" id="custom-nav">
+        <ul>
+            
+            <li class="custom-nav-item">
+                <a href="/" class="custom-nav-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door mx-4" viewBox="0 0 16 16">
+                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z" />
+                </svg>
+                Blog Home
+                </a>
+            </li>
             <li class="tm-nav-item ">
                 <a href="login" class="tm-nav-link">
-                    <<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-open mx-4" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-door-open mx-4" viewBox="0 0 16 16">
                         <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1" />
                         <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117M11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5M4 1.934V15h6V1.077z" />
                         </svg>
@@ -108,6 +115,10 @@
                     register
                 </a>
             </li>
+
+        </ul>
+    </nav>
+</header>
         <?php
         }
         ?>

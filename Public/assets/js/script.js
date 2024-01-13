@@ -74,10 +74,10 @@ function add_categorie()
       {
         document.querySelector(".t_body").insertAdjacentHTML('beforeend',`
         <tr class="categories" data-index="<?= $index++ ?>">
-        <th scope="row" id="IDCategorie">${res[i]['id']}</th>
+        <th scope="row" id="IDCategorie">${res[i]['id_categorie']}</th>
         <td id="nameCategorie">${res[i]['name']}</td>
         <td>
-        <button type="button" data-bs-toggle="modal" data-bs-target="#Modal${res[i]['id']}" class="m-0 btn btn-primary">
+        <button type="button" data-bs-toggle="modal" data-bs-target="#Modal${res[i]['id_categorie']}" class="m-0 btn btn-primary">
         <i class="bi bi-pencil-fill"></i> Edit
         </button>
         <button type="button" onclick="deleteRow(event)" class="m-0 btn btn-danger">
@@ -87,7 +87,7 @@ function add_categorie()
         </td>
         </tr>
         <!-- start modal update -->
-        <div class="modal fade" id="Modal${res[i]['id']}" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+        <div class="modal fade" id="Modal${res[i]['id_categorie']}" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -96,7 +96,7 @@ function add_categorie()
         </div>
         <div class="modal-body">
         
-        <input type="hedden" value="${res[i]['id']}" class="form-control" id="categoryid" name="categoryName" disabled>
+        <input type="hedden" value="${res[i]['id_categorie']}" class="form-control" id="categoryid" name="categoryName" disabled>
         <div class="mb-3">
         <label for="categoryName" class="form-label">Nom de la catégorie</label>
         <input type="text" value="${res[i]['name']}" class="form-control" id="categoryName_up" name="categoryName">
@@ -126,8 +126,8 @@ function getIndex(e)
 }
 function update_categorie(e)
 {
-  const value_name = e.currentTarget.closest('.form_up').querySelector("#categoryName_up").value;
   const value_id = e.currentTarget.closest('.form_up').querySelector("#categoryid").value;
+  const value_name = e.currentTarget.closest('.form_up').querySelector("#categoryName_up").value;
   const data = {
     id : value_id, 
     name : value_name

@@ -21,7 +21,7 @@ class Crud_Categorie
     public static function show_OneCategorie($id)
     {
         self::conect();
-        $sql = "SELECT * FROM categories WHERE id = ?";
+        $sql = "SELECT * FROM categories WHERE id_categorie = ?";
         $stmt = self::$conn->prepare($sql);
         $stmt->bindParam(1 , $id);
         $stmt->execute();
@@ -39,18 +39,27 @@ class Crud_Categorie
     public static function update($categoryID,$categoryName)
     {
         self::conect();
-        $sql = "UPDATE categories SET `name` = ? WHERE id = ?";
+        $sql = "UPDATE categories SET `name` = ? WHERE id_categorie = ?";
         $stmt = self::$conn->prepare($sql);
         $stmt->bindParam(1 , $categoryName);
         $stmt->bindParam(2 , $categoryID);
         return $stmt->execute();
         
     }
+    public static function show_Categorie_wiki($id_wiki)
+    {
+        self::conect();
+        $sql = "SELECT id_categorie,categories.name FROM wikis INNER JOIN categories ON categories.id_categorie = wikis.categorie_id  WHERE wikis.id = ?";
+        $stmt = self::$conn->prepare($sql);
+        $stmt->bindParam(1 , $id_wiki);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
     
     public static function delete($id)
     {
         self::conect();
-        $sql = "DELETE FROM categories WHERE id = ?";
+        $sql = "DELETE FROM categories WHERE id_categorie = ?";
         $stmt = self::$conn->prepare($sql);
         $stmt->bindParam(1 , $id);
         return  $stmt->execute();

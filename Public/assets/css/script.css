@@ -52,7 +52,40 @@ hr {
     margin-top: 50px;
     margin-bottom: 115px;
 }
+.custom-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 0.5px;
+    color: white;
+}
 
+.custom-nav {
+  
+    margin-top: 10px;
+}
+
+.custom-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.custom-nav a {
+    text-decoration: none;
+    color: white;
+}
+.search_bar{
+
+    margin-left: 200px !important;
+    margin-top: 50px !important;
+}
 .tm-site-logo {
     width: 75px;
     height: 75px;
@@ -68,6 +101,10 @@ hr {
 .tm-main {
     margin-left: 400px;
     padding: 80px 100px 25px;
+   
+}
+.admin{
+    width: 100%;
 }
 
 .tm-post { max-width: 470px; }
@@ -286,7 +323,18 @@ ul {
     justify-content: flex-end;
     align-items: center;
 }
-
+#parentTag{
+    background-color : rgb(228, 228, 228);
+    position: absolute;
+    right: 226px;
+    width: 203px;
+}
+.contentTag{
+    color: rgb(0, 0, 0);
+}
+.select_tag{
+    width: 250px !important;
+}
 .tm-prev-next-wrapper,
 .tm-paging-wrapper {
     flex: 0 0 50%;
@@ -353,6 +401,8 @@ figcaption { line-height: 1.4; }
 .tm-mt-100 { margin-top: 100px; }
 .tm-mr-20 { margin-right: 20px; }
 .tm-color-primary, span.tm-color-primary { color: #099; }
+.tm-color-dark, span.tm-color-dark { color: rgb(0, 0, 0); }
+
 a.tm-color-gray, .tm-color-gray { color: #999; }
 a.tm-color-gray:hover { color: #099; }
 .tm-bg-gray { background-color: #F3F4F5; }

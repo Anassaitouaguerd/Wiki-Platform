@@ -132,11 +132,11 @@
                 <tr class="tags" data-index="<?= $index++ ?>">
                         <th scope="row" id="idTage">${res[i]['id']}</th>
                         <td id="nameTag">${res[i]['name']}</td>
-                        <td>
+                        <td>     
                         <button type="button" onclick="getIndex(event)" data-bs-toggle="modal" data-bs-target="#Modal${res[i]['id']}" class="m-0 btn btn-primary">
                           <i class="bi bi-pencil-fill"></i> Edit
                         </button>
-                        <button type="button"  class="m-0 btn btn-danger">
+                        <button type="button" onclick="delete_tag(event)" class="m-0 btn btn-danger">
                             <i class="bi bi-trash-fill"></i> Delete
                         </button>
                         </td>
@@ -205,6 +205,7 @@
                 req.onreadystatechange = () => {
                     if (req.status == 200 && req.readyState == 4) {
                         const res = JSON.parse(req.responseText);
+                        console.log(res);
                         if (res == true) {
                             TRparent.remove();
                         }

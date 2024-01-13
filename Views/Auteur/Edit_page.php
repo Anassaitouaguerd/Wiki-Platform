@@ -21,52 +21,61 @@
             <?php include("../Views/partials/_navbar.php"); ?>
         </div>
     </header>
+
     <div class="container-fluid">
         <main class="tm-main">
-            <form action="add_wiki" method="POST">
+            <form action="update_wiki" method="POST">
                 <h1>Title Wiki</h1>
+
+                <input type="hidden" name="id_wiki" value="<?= $getwiki['id'] ?>">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter title">
+                    <input type="text" class="form-control" id="title" value="<?= $getwiki['title'] ?>" name="title" placeholder="Enter title">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description">
+                    <input type="text" class="form-control" id="description" value="<?= $getwiki['description'] ?>" name="description" placeholder="Enter Description">
                 </div>
                 <div class="d-flex">
                     <div class="w-50 mt-4">
-                    <label for="categorie" class="ms-4">Categories</label>
-                    <select id="select-categorie" name="categorie_wiki" multiple class="form-control ml-1" placeholder="Select a Categorie..." autocomplete="off">
-                        <option value="">Select a person...</option>
-                        <?php
-                   
-                        foreach($allCategorie as $rows)
-                        {
-                        ?>
-                        <option value="<?= $rows['id_categorie']?>"><?= $rows['name']?></option>
-                        <?php 
-                    } ?>
+                        <label for="categorie" class="ms-4">Categories</label>
+                        <select id="select-categorie" name="categorie_wiki" multiple class="form-control ml-1" placeholder="Select a Categorie..." autocomplete="off">
+                            <option value="">Select a person...</option>
+                            <?php
 
-                    </select>
+                            foreach ($getallCategorie as $rows) {
+                            ?>
+                                <option value="<?= $rows['id_categorie'] ?>"><?= $rows['name'] ?></option>
+                            <?php
+                            } ?>
+
+                        </select>
                     </div>
                     <div class="w-50 mt-4">
-                    <label for="Tags" class="ms-4">Tags</label>
-                    <select id="select-tags" name="tags[]" multiple class="form-control ml-1" placeholder="Select a Tags..." autocomplete="off">
-                        <option value="">Select a person...</option>
-                        <?php
-                        foreach($allTags as $rows)
-                        {
-                        ?>
-                        <option value="<?= $rows['id']?>"><?= $rows['name']?></option>
-                        <?php } ?>
+                        <label for="Tags" class="ms-4">Tags</label>
+                        <select id="select-tags" name="tags[]" multiple class="form-control ml-1" placeholder="Select a Tags..." autocomplete="off">
+                            <option value="">Select a person...</option>
+                            <?php
+                            foreach ($tags_to_wiki as $tags_selected) {
+                            ?>
+                                <option value="<?= $tags_selected['id'] ?>" selected><?= $tags_selected['name'] ?></option>
 
-                    </select>
+                            <?php
+                            }
+                            ?>
+                            <?php
+                            foreach ($allTags as $rows) {
+                            ?>
+                                <option value="<?= $rows['id'] ?>"><?= $rows['name'] ?></option>
+                            <?php } ?>
+
+                        </select>
                     </div>
                 </div>
 
 
                 <h2 class="mt-4">Content</h2>
-                <textarea id="tiny" name="article"></textarea>
+                <textarea id="tiny" name="article"><?= $getwiki['content'] ?></textarea>
                 <div class="w-100 d-flex flex-row-reverse">
                     <button type="submit" class="w-50 btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">

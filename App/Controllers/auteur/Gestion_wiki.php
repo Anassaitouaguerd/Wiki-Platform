@@ -4,6 +4,7 @@ use App\Models\Crud_Categorie;
 use App\Models\Crud_Tage;
 use App\Controllers\ViewController;
 use App\Models\Crud_wiki;
+use App\Models\wiki_tags;
 
 class Gestion_wiki
 {
@@ -16,7 +17,7 @@ class Gestion_wiki
     public static function getCategorie_tags()
     {
         $data_categorie = self::$categorie = Crud_Categorie::displayAll();
-        $tags = self::$categorie = Crud_Tage::displayAll();
+        $tags = self::$tags = Crud_Tage::displayAll();
         ViewController::wiki($data_categorie ,$tags);
     }
 
@@ -35,7 +36,7 @@ class Gestion_wiki
     {
         extract($_POST);
         $id = $_SESSION['id'];
-        $result = self::$wiki = Crud_wiki::insert($title,$categorie_wiki,$id,$article);
+        $result = self::$wiki = Crud_wiki::insert($title,$categorie_wiki,$id,$article,$description);
         if($result)
         {
             $wiki_id = self::$wiki = Crud_wiki::show_OneWiki($id)['id'];
@@ -47,10 +48,38 @@ class Gestion_wiki
             if($insert_wikiTags )
             {
                 
-                header('location: dash_autheur');
+                header('location: my_wikis');
             }
             
         }
+    }
+    public static function page_edit()
+    {
+        extract($_POST);
+        $tagsTo_Wikis = Crud_Tage::show_TagsWiki($id_wiki);
+        
+        $alltags = Crud_Tage::displayAll();
+        $allCategorie = Crud_Categorie::displayAll();
+        $wiki = Crud_wiki::display_OneWiki($id_wiki);
+        if($wiki)
+        {
+            ViewController::edite_page($tagsTo_Wikis, $alltags ,$wiki,$allCategorie);
+        }
+    }
+    public static function update_wiki()
+    {
+        extract($_POST);
+        $update_wiki = Crud_wiki::update($id_wiki, $title, $description, $categorie_wiki, $article);
+        for ($i = 0; $i < count($tags); $i++) {
+            $tag_id = $tags[$i];
+             $update_wikiTags = wiki_tags::update($id_wiki , $tag_id);
+            
+        }
+        if($update_wikiTags)
+        {
+            header('location: my_wikis');
+        }
+
     }
     public static function delet_wiki()
     {

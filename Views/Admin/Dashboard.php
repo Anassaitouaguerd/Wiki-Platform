@@ -26,24 +26,32 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Wiki</h5>
-              <p class="card-text">Content for Card 1</p>
+              <h5 class="card-title">Tous les utilisateurs</h5>
+              <p class="card-text">Total : <?= $count_users['AllUsers']?></p>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Categories</h5>
-              <p class="card-text">Content for Card 2</p>
+              <h5 class="card-title">Tous les Wikis</h5>
+              <p class="card-text">Total : <?= $count_wikis['Allwikis']?></p>
             </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Tags</h5>
-              <p class="card-text">Content for Card 2</p>
+              <h5 class="card-title">Tous les Categories</h5>
+              <p class="card-text">Total : <?= $count_allCategorie['AllCategorie']?></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Tous les Tags</h5>
+              <p class="card-text">Total : <?= $count_tags['AllTag']?></p>
             </div>
           </div>
         </div>

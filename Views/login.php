@@ -8,14 +8,9 @@
     <title>Login</title>
 </head>
 <body>
-<header class="tm-header" id="tm-header">
-        <div class="tm-header-wrapper">
-            <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
+
            <?php include ("partials/_navbar.php") ;?>
-        </div>
-    </header>
+       
 <div class="container">
     <div class="row">
         <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
