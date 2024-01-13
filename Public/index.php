@@ -28,22 +28,31 @@ $Route->get('/sign_up',fn()=>ViewController::sign_up());
 
 if(isset($_SESSION['role']))
 {
-    $Route->get('/dashboard',fn()=>DashboardController::dashboard());
-    $Route->post('/add_categorie',fn()=>CategorieController::Add_categorie());
-    $Route->post('/update_Categorie',fn()=>CategorieController::update_Categorie());
-    $Route->post('/delet_categporie',fn()=>CategorieController::delet_categporie());
-    $Route->post('/add_tag',fn()=>TageController::add_tag());
-    $Route->post('/update_Tag',fn()=>TageController::update_Tag());
-    $Route->post('/delet_tag',fn()=>TageController::delet_tag());
-    $Route->get('/gestion_wikis',fn()=>Gestion_wiki::getCategorie_tags());
-    $Route->post('/add_wiki',fn()=>Gestion_wiki::add_wiki());
-    $Route->post('/update_wiki',fn()=>Gestion_wiki::update_wiki());
-    $Route->post('/delet_wiki',fn()=>Gestion_wiki::delet_wiki());
-    $Route->get('/my_wikis',fn()=>Gestion_wiki::display_wiki());
-    $Route->post('/page_edit',fn()=>Gestion_wiki::page_edit());
-    $Route->post('/archive_wiki',fn()=>ArchiveWiki::archive_wiki());
-    $Route->get('/PageWiki_archive',fn()=>ArchiveWiki::view_Archive());
-    $Route->get('/log_out',fn()=>AuthController::log_out());
+    if($_SESSION['role'] == "admin")
+    {
+        $Route->get('/dashboard',fn()=>DashboardController::dashboard());
+        $Route->post('/add_categorie',fn()=>CategorieController::Add_categorie());
+        $Route->post('/update_Categorie',fn()=>CategorieController::update_Categorie());
+        $Route->post('/delet_categporie',fn()=>CategorieController::delet_categporie());
+        $Route->post('/add_tag',fn()=>TageController::add_tag());
+        $Route->post('/update_Tag',fn()=>TageController::update_Tag());
+        $Route->post('/delet_tag',fn()=>TageController::delet_tag());
+        $Route->post('/archive_wiki',fn()=>ArchiveWiki::archive_wiki());
+        $Route->post('/disarchiver',fn()=>ArchiveWiki::disarchiver_wiki());
+        $Route->get('/PageWiki_archive',fn()=>ArchiveWiki::view_Archive());
+        $Route->get('/log_out',fn()=>AuthController::log_out());
+
+    }
+    else if($_SESSION['role'] == "author")
+    {
+        $Route->get('/gestion_wikis',fn()=>Gestion_wiki::getCategorie_tags());
+        $Route->post('/add_wiki',fn()=>Gestion_wiki::add_wiki());
+        $Route->post('/update_wiki',fn()=>Gestion_wiki::update_wiki());
+        $Route->post('/delet_wiki',fn()=>Gestion_wiki::delet_wiki());
+        $Route->get('/my_wikis',fn()=>Gestion_wiki::display_wiki());
+        $Route->post('/page_edit',fn()=>Gestion_wiki::page_edit());
+        $Route->get('/log_out',fn()=>AuthController::log_out());
+    }
     
 }
 $Route->get('/categorie',fn()=>CategorieController::display_categorie());
