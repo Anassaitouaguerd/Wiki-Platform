@@ -28,11 +28,9 @@ public static function Validation_name($username)
 }
 public static function Login()
 {
-    if(isset($_POST['login']))
-    {
-        extract($_POST);
-        $Email_valid = self::Validation_email($email);
-        $Password = self::Validation_pass($password);
+        $data = json_decode(file_get_contents("php://input"));
+        $Email_valid = self::Validation_email($data->email);
+        $Password = self::Validation_pass($data->password);
         $Pass = MD5($Password);
             self::$log = Authentification::login($Email_valid,$Pass);
             $result = self::$log;
@@ -43,42 +41,41 @@ public static function Login()
             $_SESSION['role'] = $result[0]['role'];
             if($_SESSION['role'] == "author")
             {
-                header('location:dash_autheur');
+                echo json_encode("OK");
                 
             }else if($_SESSION['role'] == "admin")
             {
-                header('location:dashboard');
+                echo json_encode("OK");
             }
         }
         else
         {
             $_SESSION['message'] = "the account is not found";
-            header('location:login');
+            echo json_encode("false");
 
         }
-     }   
+      
 }
 public static function Register()
 {
-        if(isset($_POST['save']))
-        {
-                extract($_POST);
-                $Email_valid = self::Validation_email($email);
-                $Password = self::Validation_pass($password);
+    
+                $data = json_decode(file_get_contents("php://input"));
+                $Email_valid = self::Validation_email($data->email);
+                $Password = self::Validation_pass($data->password);
                 $Pass = MD5($Password);
                 self::$log = Authentification::login($Email_valid,$Pass);
                 $result = self::$log;
                 if($result)
                 {
                     $_SESSION['account_already'] = "the account is already registred";
-                    header('location:sign_up');
+                    echo json_encode("false");
                     
                 }
                 else
                 {
-                $Email_valid = self::Validation_email($email);
-                $Password = self::Validation_pass($password);
-                $username_valid = self::Validation_name($username);
+                $Email_valid = self::Validation_email($data->email);
+                $Password = self::Validation_pass($data->password);
+                $username_valid = self::Validation_name($data->username);
                 $Pass = MD5($Password);
                 self::$register = Authentification::register($username_valid, $Email_valid, $Pass);
                 $result = self::$register;
@@ -90,10 +87,9 @@ public static function Register()
 
                 if($result)
                 {
-                        header('location: dash_autheur');
+                        echo json_encode("OK");
                 }
 
-            }
          }  
 }
 public static function log_out()

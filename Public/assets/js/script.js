@@ -1,59 +1,61 @@
 
 // VALIDATION DES FORMS
-let valid = "";
-let valid_pass = "";
-function email_validation(e)
-{
-    document.querySelector(".btn_submit").disabled = true;
-    
-    if (e.key == "Enter") {
-        const emailRegex = /^[a-zA-Z0-9._-]+@(hotmail|gmail)\.[a-zA-Z]{2,4}$/;
-        const value_email = e.currentTarget.value;
-        const messageValid = document.querySelector(".messageValid");
-        
-        if (value_email.match(emailRegex)) {
-            messageValid.classList.remove("text-danger");
-            messageValid.innerHTML = "The email is valid";
-            messageValid.classList.add("text-success");
-            valid = "valid";
-        } else {
-            messageValid.classList.remove("text-success");
-            messageValid.classList.add("text-danger");
-            messageValid.innerHTML = "The email is not valid";
-            valid = " no valid";
-        }
+const form = document.getElementById('form');
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  validateInputs_login(); 
+});
+
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success')
+}
+
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+};
+
+const isValidEmail = (email) => {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return re.test(String(email).toLowerCase());
+}
+
+const validateInputs_login = () => {
+
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+
+
+    if(emailValue === '') {
+        setError(email, 'Email is required');
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Provide a valid email address');
+    } else {
+        setSuccess(email);
     }
-    
-}
-function pass_validation(e)
-{
-    document.querySelector(".btn_submit").disabled = true;
-    if (e.key == "Enter")
-    {
-        const passwordRegex = /^[a-zA-Z0-9!@#$%^&*()_+]{8,16}$/;
-        const value_password = e.currentTarget.value;
-        const messageValid = document.querySelector(".messageValid");
-        if(value_password.match(passwordRegex))
-        {   
-            messageValid.classList.remove("text-danger");
-            messageValid.innerHTML = "the email and password is validate";
-            messageValid.classList.add("text-success");
-            valid_pass = "valid";
-            
-        }else
-        {
-            messageValid.classList.remove("text-success");
-            messageValid.classList.add("text-danger");
-            messageValid.innerHTML = "the password is not validate";   
-            valid_pass = "no valid";
+
+    if(passwordValue === '') {
+        setError(password, 'Password is required');
+    } else if (passwordValue.length < 8 ) {
+        setError(password, 'Password must be at least 8 character.')
+    } else {
+        setSuccess(password);
     }
-}
-if(valid == "valid" && valid_pass == "valid")
-{
-    document.querySelector(".btn_submit").disabled = false;
-    
-}
-}
+    return true ;
+
+};
 
 // CRUD CATEGORIES 
 
