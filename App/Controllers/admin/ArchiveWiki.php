@@ -27,9 +27,6 @@ class ArchiveWiki
     public static function view_Archive()
     {
         $data = Crud_wiki::show_Allwiki_archive();
-        if($data)
-        {
             ViewController::Wiki_Archive($data);
-        }
     }
 }

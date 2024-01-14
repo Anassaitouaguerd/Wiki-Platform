@@ -53,7 +53,7 @@ class ViewController
     }
     public static function Wiki_Archive($data)
     {
-        $getwiki = $data ;
+        $getwiki = $data ;  
         require __DIR__ ."/../../Views/Admin/Wiki_Archive.php";
     }
     public static function Login()

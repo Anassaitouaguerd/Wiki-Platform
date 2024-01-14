@@ -27,24 +27,36 @@
                 <div class="row">
                     <!-- Static content without PHP -->
                     <?php
-                    foreach ($getwiki as $rows) {
+                    if ($getwiki) {
+                        foreach ($getwiki as $rows) {
                     ?>
-                       
+
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <form action="disarchiver" method="POST">
+                                        <div class="d-flex flex-row-reverse">
+                                            <input type="hidden" name="wiki_id" value="<?= $rows['id'] ?>">
+                                            <button type="submit" name="disarchiver" class="btn btn-success">
+                                                Disarchiver
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <div class="card-body">
+                                        <h2 class="card-title p-4"><?= $rows['title'] ?></h2>
+                                        <h4 class="card-title p-4"><?= $rows['description'] ?></h4>
+                                        <p class="card-text p-4"><?= (strlen($rows['content']) > 100) ? substr($rows['content'], 0, 100) . '...' :  $rows['content'] ?></p>
+                                        <p class="card-text p-4"><small class="text-muted">Created At : <?= $rows['createdAt'] ?></small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php
+                        }
+                    } else {
+                        ?>
                         <div class="col-md-6">
                             <div class="card mb-4">
-                            <form action="disarchiver" method="POST">
-                                <div class="d-flex flex-row-reverse">
-                            <input type="hidden" name="wiki_id" value="<?= $rows['id'] ?>">
-                            <button type="submit" name="disarchiver" class="btn btn-success">
-                                Disarchiver
-                            </button>
-                            </div>
-                        </form>
                                 <div class="card-body">
-                                    <h2 class="card-title p-4"><?= $rows['title'] ?></h2>
-                                    <h4 class="card-title p-4"><?= $rows['description'] ?></h4>
-                                    <p class="card-text p-4"><?= (strlen($rows['content']) > 100) ? substr($rows['content'], 0, 100) . '...' :  $rows['content'] ?></p>
-                                    <p class="card-text p-4"><small class="text-muted">Created At : <?= $rows['createdAt'] ?></small></p>
+                                    <h4 class="card-title p-4">il n'y a pas wiki archiver !!!</h4>
                                 </div>
                             </div>
                         </div>

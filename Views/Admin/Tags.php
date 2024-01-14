@@ -56,7 +56,8 @@
                     <thead>
                         <tr>
                             <th scope="col">#Id</th>
-                            <th scope="col">Name Categories</th>
+                            <th scope="col">Name Tag</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody class="t_body">
