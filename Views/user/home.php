@@ -134,7 +134,7 @@
             });
 
         function showMore() {
-            console.log(page);
+            
             page++;
             search
                 ({
