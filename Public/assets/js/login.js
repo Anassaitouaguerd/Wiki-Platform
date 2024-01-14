@@ -2,6 +2,7 @@
 /*================== VALIDATION DE FORM LOGIN =======================*/
 /*===================================================================*/
 const form = document.getElementById('form');
+const _token = document.getElementById('_token');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
@@ -11,9 +12,11 @@ form.addEventListener('submit', e => {
   {
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
+    const _tokenValue = _token.value;
     const data = {
       email: emailValue,
-      password: passwordValue
+      password: passwordValue,
+      token: _tokenValue
     };
     const req = new XMLHttpRequest();
     req.open("POST","login_controller");

@@ -10,7 +10,9 @@
 </head>
 
 <body>
-            <?php include("partials/_navbar.php"); ?>
+            <?php include("partials/_navbar.php"); 
+            $_SESSION['_token'] = bin2hex(openssl_random_pseudo_bytes(32));
+            ?>
     <div class="container">
     <div class="row form_login">
 
@@ -28,6 +30,7 @@
         unset($_SESSION['account_already']);
         ?>
         <form id="form">
+            <input type="hidden" name="_token" id="_token" value="<?= $_SESSION['_token']?>">
             <div class="input-control">
                 <label for="username">Username</label>
                 <input id="username" name="username" type="text">

@@ -2,6 +2,7 @@
 /*================== VALIDATION DE FORM REGISTER =======================*/
 /*===================================================================*/
 const form = document.getElementById('form');
+const _token = document.getElementById('_token');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
@@ -10,14 +11,15 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   if (validateInputs_register())
   {
-    
+    const _tokenValue = _token.value;
     const usernameValue = username.value.trim();
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
     const data = {
       username: usernameValue,
       email: emailValue,
-      password: passwordValue
+      password: passwordValue,
+      token: _tokenValue
     };
     const req = new XMLHttpRequest();
     req.open("POST","signup_controller");
