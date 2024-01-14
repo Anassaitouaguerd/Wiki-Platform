@@ -7,8 +7,8 @@ class Database
     public static $database;
     public static function connection()
     {
-        self::$database = new PDO("mysql:host=localhost;dbname=wiki","root","");
+        self::$database = new PDO("mysql:host=localhost;dbname=wiki;user=root");
         return self::$database;
     }
+    
 }
-echo "done";
