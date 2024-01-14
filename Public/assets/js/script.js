@@ -38,7 +38,7 @@ function add_categorie()
         <h5 class="modal-title" id="addCategoryModalLabel">Ajouter Nouvelles Catégories</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="form_up modal-body">
         
         <input type="hedden" value="${res[i]['id_categorie']}" class="form-control" id="categoryid" name="categoryName" disabled>
         <div class="mb-3">
